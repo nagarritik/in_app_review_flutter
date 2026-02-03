@@ -8,7 +8,8 @@ abstract class InAppReviewFlutterPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static InAppReviewFlutterPlatform _instance = MethodChannelInAppReviewFlutter();
+  static InAppReviewFlutterPlatform _instance =
+      MethodChannelInAppReviewFlutter();
 
   /// The default instance of [InAppReviewFlutterPlatform] to use.
   ///
@@ -23,7 +24,18 @@ abstract class InAppReviewFlutterPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<void> requestReview() {
+    throw UnimplementedError('requestReview() has not been implemented.');
+  }
+
+  Future<void> openStoreListing({
+    String? appStoreId,
+    String? microsoftStoreId,
+  }) {
+    throw UnimplementedError('openStoreListing() has not been implemented.');
+  }
+
+  Future<bool> isAvailable() {
+    throw UnimplementedError('isAvailable() has not been implemented.');
   }
 }

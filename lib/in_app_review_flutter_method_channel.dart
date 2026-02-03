@@ -10,8 +10,26 @@ class MethodChannelInAppReviewFlutter extends InAppReviewFlutterPlatform {
   final methodChannel = const MethodChannel('in_app_review_flutter');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<void> requestReview() async {
+    await methodChannel.invokeMethod('requestReview');
+  }
+
+  @override
+  Future<void> openStoreListing({
+    String? appStoreId,
+    String? microsoftStoreId,
+  }) async {
+    await methodChannel.invokeMethod('openStoreListing', <String, dynamic>{
+      'appStoreId': appStoreId,
+      'microsoftStoreId': microsoftStoreId,
+    });
+  }
+
+  @override
+  Future<bool> isAvailable() async {
+    final bool? isAvailable = await methodChannel.invokeMethod<bool>(
+      'isAvailable',
+    );
+    return isAvailable ?? false;
   }
 }

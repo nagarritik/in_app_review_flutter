@@ -8,20 +8,14 @@ void main() {
   MethodChannelInAppReviewFlutter platform = MethodChannelInAppReviewFlutter();
   const MethodChannel channel = MethodChannel('in_app_review_flutter');
 
-  setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        return '42';
-      },
-    );
-  });
-
-  tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
-  });
-
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('isAvailable', () async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+          if (methodCall.method == 'isAvailable') {
+            return true;
+          }
+          return null;
+        });
+    expect(await platform.isAvailable(), true);
   });
 }

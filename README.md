@@ -1,15 +1,45 @@
 # in_app_review_flutter
 
-A new Flutter plugin project.
+A Flutter plugin for requesting and launching the In-App Review flow on Android and iOS. This plugin also supports checking availability and opening the store listing as a fallback.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+* Request In-App Review flow.
+* Check if the review flow is available.
+* Open the app's store listing (Play Store / App Store) directly.
+* Android support implemented.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Usage
+
+Import the package:
+
+```dart
+import 'package:in_app_review_flutter/in_app_review_flutter.dart';
+```
+
+Create an instance:
+
+```dart
+final InAppReviewFlutter inAppReview = InAppReviewFlutter();
+```
+
+### Request Review
+
+To request the review flow:
+
+```dart
+// Check if review is available first (optional but recommended)
+if (await inAppReview.isAvailable()) {
+  await inAppReview.requestReview();
+}
+```
+
+### Open Store Listing
+
+To open the store listing directly (useful if in-app review is not available or quota is exceeded):
+
+```dart
+await inAppReview.openStoreListing();
+```
+
 
