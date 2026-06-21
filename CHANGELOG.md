@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Migrated Android build configuration to Built-in Kotlin (compatible with AGP 9.0+).
+
 ## 1.0.0
 
 * Initial release with support for requesting in-app reviews.

@@ -1,6 +1,6 @@
 name: in_app_review_flutter
 description: A Flutter plugin for requesting and launching the In-App Review flow on Android and iOS. Supports checking availability and opening the store listing.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/nagarritik/in_app_review_flutter
 
 environment:
